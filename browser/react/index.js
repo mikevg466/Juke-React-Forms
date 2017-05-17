@@ -8,6 +8,7 @@ import Artists from './components/Artists';
 import Artist from './components/Artist';
 import Songs from './components/Songs';
 import FilterableArtistsContainer from './containers/FilterableArtistsContainer';
+import Playlist from './components/Playlist';
 
 ReactDOM.render(
   <Router history={hashHistory}>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/artists/:artistId/songs" component={Songs} />
       </Route>
       <IndexRedirect to='/albums' />
+      <Route path="/playlists" component={Playlist} />
     </Route>
   </Router>,
   document.getElementById('app')
