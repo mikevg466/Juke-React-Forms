@@ -14,12 +14,14 @@ const Playlist = (props) => {
           <input 
             className="form-control" 
             type="text"
+            value={props.value}
             onChange={props.handleChange}/>
         </div>
       </div>
       <div className="form-group">
         <div className="col-xs-10 col-xs-offset-2">
-        <button type="submit" className="btn btn-success">Create Playlist</button>
+          <button type="submit" className="btn btn-success" disabled={props.isDisabled} >Create Playlist</button>
+           <div className="alert alert-warning" style={{visibility: props.validationStyle}} >Please enter a name</div>
         </div>
       </div>
       </fieldset>
