@@ -11,6 +11,8 @@ import Player from '../components/Player';
 
 import { convertAlbum, convertAlbums, convertSong, skip } from '../utils';
 
+import { hashHistory } from 'react-router';
+
 export default class AppContainer extends Component {
 
   constructor (props) {
@@ -50,7 +52,17 @@ export default class AppContainer extends Component {
         return axios.get('/api/playlists/');
       })
       .then(res => res.data)
-      .then(data => this.setState({playlists: data}))
+      .then(data => { 
+        this.setState({playlists: data});
+        return data;
+      })
+      .then(playlistData => {
+        const playlistId = playlistData.filter((playlist) => {
+          return playlist.name === playlistName;
+        })[0].id;
+        const path = '/playlists/' + playlistId.toString();
+        hashHistory.push(path);
+      })
       .catch(console.error.bind(console));
   }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import Playlist from '../components/Playlist';
-import axios from 'axios';
 
 export default class extends React.Component {
   constructor(props) {
